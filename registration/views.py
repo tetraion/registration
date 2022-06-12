@@ -7,9 +7,9 @@ from . import forms
 from . import scrape_BUYMA
 
 from django.shortcuts import render, redirect
-from .models import Hiragana
+
 from django.http import HttpResponse
-import csv, io
+
 
 class SignUpView(CreateView):
     form_class = SignUpForm
