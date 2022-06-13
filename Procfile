@@ -1,1 +1,1 @@
-web: gunicorn pj_scrape.wsgi
+web: gunicorn pj_login.wsgi
