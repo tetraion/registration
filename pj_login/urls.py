@@ -6,15 +6,14 @@ from django.contrib.auth.decorators import login_required
 
 from registration import views
 
-# 実はページを表示するだけならこのように1行で書くことが出来ます。
 
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     
-    # login_requiredで囲むとログイン必須のページになります。
+    # login_requiredでログイン必須のページ
     path("", login_required(views.Index_view.as_view()), name="index"),
-    # この１行でdjangoでデフォルトで用意している以下がすべて入ります。
+    # djangoデフォルトログイン
     # ・ログイン
     # ・ログアウト
     # ・パスワード変更

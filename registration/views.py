@@ -42,7 +42,6 @@ def csvexport(data_buyma):
 
 
 # ここからcsvの内容を編集コード
-    # writer.writerow(data_buyma)
     data_buyma.to_csv(path_or_buf=response, encoding='utf_8_sig', index=None)
 
     return response

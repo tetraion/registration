@@ -12,11 +12,13 @@ widgets_textinput = forms.TextInput(
     }
 )
 
+# ログインユーザ
 class SignUpForm(UserCreationForm):
     class Meta:
         model = User
         fields = ("username", "email", "password1", "password2")
 
+# スクレイピングフォーム
 class TextForm(forms.Form):
 
     search = forms.CharField(label="ブランド名", widget=widgets_textinput)

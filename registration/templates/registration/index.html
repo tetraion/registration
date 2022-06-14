@@ -3,6 +3,7 @@
 <h2>BUYMAの商品リサーチWEBアプリケーション</h2>
 <p>{{ user }}さん、こんにちは！</p>
 
+<!-- フォームの表示 -->
 <form method="post">
     {% csrf_token %}
     {% for field in form %}
@@ -11,6 +12,8 @@
         {{field}}
     </p>
     {% endfor %}
+
+    <!-- csv出力 -->
     <input type="submit" value="csv出力" name="nomal" class="btn btn-primary" />
 </form>
   
