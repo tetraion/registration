@@ -1,12 +1,12 @@
 from django.views.generic.edit import CreateView
 from django.urls import reverse_lazy
 from django.views.generic import FormView
-from .forms import SignUpForm
-
+from .forms import SignUpForm, User
+from .models import *
 from . import forms
 from . import scrape_BUYMA
 
-from django.shortcuts import render, redirect
+from django.shortcuts import get_object_or_404, render, redirect
 
 from django.http import HttpResponse
 
@@ -31,7 +31,22 @@ class Index_view(FormView):
             data_buyma = scrape_BUYMA.sea(search, limit)
             response = csvexport(data_buyma)
 
+            # Usage = get_object_or_404(UserUsageSituation, )
+            last_usage = UserUsageSituation.objects.last()
+            
+            new_usage= UserUsageSituation.objects.create(user_id = request.user)
+            new_usage.display_count = last_usage.display_count + 1
+            new_usage.research_count = last_usage.research_count + 1
+            new_usage.save()
 
+        # research_count=new_usage.research_count
+        # ctxt = self.get_context_data(research_count = research_count)
+        # return render(                                                                 
+        #     request,                                                                     
+        #     'registration/index.html',                                               
+        #     ctxt,
+        #     response                                                                      
+        # ) 
         return response
 
 
